@@ -42,7 +42,7 @@
             text-decoration: none;
             color: inherit;
         }
-
+        input[type="email"],
         input[type="text"],
         input[type="password"],
         input[type="submit"] {
@@ -86,13 +86,13 @@
         <h1>Journal Login/Sign Up</h1>
         <h2>Login</h2>
         <form id="loginForm">
-            <input type="text" id="username" placeholder="Username" required>
+            <input type="email" id="email" placeholder="Email Address" required>
             <input type="password" id="password" placeholder="Password" required>
             <input type="submit" class="submit-button" value="Login">
         </form>
         <h2>Sign Up</h2>
         <form id="signupForm">
-            <input type="text" id="newUsername" placeholder="New Username" required>
+            <input type="email" id="newEmail" placeholder="Email Address" required>
             <input type="password" id="newPassword" placeholder="New Password" required>
             <input type="submit" class="submit-button" value="Sign Up">
         </form>
@@ -102,8 +102,19 @@
         document.addEventListener("DOMContentLoaded", function () {
             const darkModeCheckbox = document.getElementById("darkModeCheckbox");
 
+            // Check if dark mode preference exists in localStorage
+            const isDarkMode = localStorage.getItem("darkMode") === "true";
+
+            // Set initial dark mode based on the stored preference
+            if (isDarkMode) {
+                document.body.classList.add("dark-mode");
+                darkModeCheckbox.checked = true;
+            }
+
+            // Toggle dark mode and save preference to localStorage
             darkModeCheckbox.addEventListener("change", function () {
                 document.body.classList.toggle("dark-mode");
+                localStorage.setItem("darkMode", darkModeCheckbox.checked);
             });
         });
     </script>
