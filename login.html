@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal Login/Sign Up</title>
+    <style>
+        body {
+            font-family: 'Courier Prime', monospace;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            background-color: #ffffff;
+            color: #000000;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .dark-mode {
+            background-color: #31363f;
+            color: #6d67e4;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .top-left {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .top-right {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Courier Prime', monospace;
+            font-size: 14px;
+            background-color: transparent;
+            color: inherit;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            outline: none;
+        }
+
+        .submit-button {
+            background-color: #6d67e4;
+            color: #ffffff;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .submit-button:hover {
+            background-color: #544fc3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="top-left">
+            <input type="checkbox" id="darkModeCheckbox"> Dark Mode
+        </div>
+        <div class="top-right">
+            <a href="index.html">Home</a>
+            <a href="archive.html">Archives</a>
+        </div>
+        <h1>Journal Login/Sign Up</h1>
+        <h2>Login</h2>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <input type="submit" class="submit-button" value="Login">
+        </form>
+        <h2>Sign Up</h2>
+        <form id="signupForm">
+            <input type="text" id="newUsername" placeholder="New Username" required>
+            <input type="password" id="newPassword" placeholder="New Password" required>
+            <input type="submit" class="submit-button" value="Sign Up">
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const darkModeCheckbox = document.getElementById("darkModeCheckbox");
+
+            darkModeCheckbox.addEventListener("change", function () {
+                document.body.classList.toggle("dark-mode");
+            });
+        });
+    </script>
+</body>
+</html>
