@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account</title>
+    <style>
+        body {
+            font-family: 'Courier Prime', monospace;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            background-color: #ffffff;
+            color: #000000;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .dark-mode {
+            background-color: #31363f;
+            color: #6d67e4;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .top-left {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .top-right {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .submit-button {
+            background-color: #6d67e4;
+            color: #ffffff;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Courier Prime', monospace;
+            font-size: 14px;
+        }
+
+        .submit-button:hover {
+            background-color: #544fc3;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .username-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Courier Prime', monospace;
+            font-size: 14px;
+        }
+
+        .info {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="top-left">
+            <input type="checkbox" id="darkModeCheckbox"> Dark Mode
+        </div>
+        <div class="top-right">
+            <a href="index.html">Home</a>
+            <a href="archive.html">Archives</a>
+            <a href="account.html">Account</a>
+        </div>
+        <h1>Account</h1>
+        <div class="info">
+            <p>Email: <span id="userEmail"></span></p>
+            <p>Account created on: January 1, 2022</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const darkModeCheckbox = document.getElementById("darkModeCheckbox");
+
+            // Check if dark mode preference exists in localStorage
+            const isDarkMode = localStorage.getItem("darkMode") === "true";
+            const loginButton = document.getElementById("loginButton");
+
+
+            // Set initial dark mode based on the stored preference
+            if (isDarkMode) {
+                document.body.classList.add("dark-mode");
+                darkModeCheckbox.checked = true;
+            }
+
+            // Toggle dark mode and save preference to localStorage
+            darkModeCheckbox.addEventListener("change", function () {
+                document.body.classList.toggle("dark-mode");
+                localStorage.setItem("darkMode", darkModeCheckbox.checked);
+            });
+
+            // Retrieve user's email from local storage and display it
+            const userEmail = localStorage.getItem("userEmail");
+            document.getElementById("userEmail").textContent = userEmail;
+             // Change login button text to "Account" when signed in
+             const isLoggedIn = false;
+            localStorage.setItem("isLoggedIn", isLoggedIn)
+ // Set this to true if the user is logged in
+            if (isLoggedIn) {
+                loginButton.innerHTML = '<a href="account.html">Account</a>';
+                localStorage.setItem("isLoggedIn", isLoggedIn)
+
+            }
+        });
+    </script>
+</body>
+</html>
