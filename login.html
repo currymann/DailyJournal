@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Journal Login/Sign Up</title>
+    <title>Login</title>
     <style>
         body {
             font-family: 'Courier Prime', monospace;
@@ -36,6 +36,10 @@
             position: absolute;
             top: 20px;
             right: 20px;
+        }
+        .center-bottom {
+            position: relative;
+            left: 44%;
         }
 
         a {
@@ -82,25 +86,31 @@
         <div class="top-right">
             <a href="index.html">Home</a>
             <a href="archive.html">Archives</a>
+            <a href="login.html">Login</a>
         </div>
-        <h1>Journal Login/Sign Up</h1>
-        <h2>Login</h2>
+        <h1>Login</h1>
         <form id="loginForm">
             <input type="email" id="email" placeholder="Email Address" required>
             <input type="password" id="password" placeholder="Password" required>
             <input type="submit" class="submit-button" value="Login">
+          
+
         </form>
-        <h2>Sign Up</h2>
-        <form id="signupForm">
-            <input type="email" id="newEmail" placeholder="Email Address" required>
-            <input type="password" id="newPassword" placeholder="New Password" required>
-            <input type="submit" class="submit-button" value="Sign Up">
-        </form>
+        <div class="center-bottom">
+            <a href="register.html">Register</a>
+
+
+   
+     
+       
+       
     </div>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const darkModeCheckbox = document.getElementById("darkModeCheckbox");
+            const loginButton = document.getElementById("loginButton");
+
 
             // Check if dark mode preference exists in localStorage
             const isDarkMode = localStorage.getItem("darkMode") === "true";
@@ -116,6 +126,15 @@
                 document.body.classList.toggle("dark-mode");
                 localStorage.setItem("darkMode", darkModeCheckbox.checked);
             });
+             // Change login button text to "Account" when signed in
+             const isLoggedIn = false;
+            localStorage.setItem("isLoggedIn", isLoggedIn)
+ // Set this to true if the user is logged in
+            if (isLoggedIn) {
+                loginButton.innerHTML = '<a href="account.html">Account</a>';
+                localStorage.setItem("isLoggedIn", isLoggedIn)
+
+            }
         });
     </script>
 </body>
