@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Journal Andy Yu Home</title>
+    <title>Journal Home</title>
     <style>
         body {
             font-family: 'Courier Prime', monospace;
@@ -73,6 +73,12 @@
             text-decoration: none;
             color: inherit;
         }
+
+        .clock {
+            text-align: center;
+            font-size: 16px;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -81,22 +87,42 @@
             <input type="checkbox" id="darkModeCheckbox"> Dark Mode
         </div>
         <div class="top-right">
+            <a href="index.html">Home</a>
             <a href="archive.html">Archives</a>
-            <a href="login.html">Login/Sign Up</a>
+            <a href="login.html">Login</a>
         </div>
-        <h1>Welcome to the Andy's Daily Journal</h1>
-        <p>This is a place where you can write a new journal every day! You can look at your old journals in the archives section.</p>
+        <h1>Welcome to The Daily</h1>
+        <p>Write whatever you want for people to see...</p>
         <form id="journalForm">
-            <textarea id="journalInput" placeholder="Write your journal log here..." required></textarea>
+            <textarea id="journalInput" placeholder="Write your submission here..." required></textarea>
             <button type="submit" class="submit-button">Submit</button>
         </form>
     </div>
+
+    <div class="clock" id="clock"></div>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const journalForm = document.getElementById("journalForm");
             const journalInput = document.getElementById("journalInput");
             const darkModeCheckbox = document.getElementById("darkModeCheckbox");
+            const clock = document.getElementById("clock");
+            const loginButton = document.getElementById("loginButton");
+
+
+            // Function to update the clock every second
+            function updateClock() {
+                const now = new Date();
+                const date = now.toLocaleDateString("en-US", { day: "2-digit", month: "short", year: "numeric" });
+                const time = now.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", second: "2-digit", hour12: true });
+                clock.textContent = `${date}, ${time}`;
+            }
+
+            // Initial call to update the clock
+            updateClock();
+
+            // Update the clock every second
+            setInterval(updateClock, 1000);
 
             // Check if dark mode preference exists in localStorage
             const isDarkMode = localStorage.getItem("darkMode") === "true";
@@ -118,6 +144,15 @@
                 // Your submission logic goes here
                 alert("Journal entry submitted!");
             });
+             // Change login button text to "Account" when signed in
+             const isLoggedIn = false;
+            localStorage.setItem("isLoggedIn", isLoggedIn)
+ // Set this to true if the user is logged in
+            if (isLoggedIn) {
+                loginButton.innerHTML = '<a href="account.html">Account</a>';
+                localStorage.setItem("isLoggedIn", isLoggedIn)
+
+            }
         });
     </script>
 </body>
